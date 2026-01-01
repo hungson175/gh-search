@@ -52,6 +52,25 @@ PO → YOU → PO → DEV
 tm-send PO "TL [HH:mm]: Message here"
 ```
 
+### ⚠️ CRITICAL COMMUNICATION RULES ⚠️
+
+**ALWAYS:**
+- ✅ Use `tm-send PO "message"` for ALL communication
+- ✅ Send ONE consolidated message (not line-by-line)
+- ✅ Keep messages concise (max 10-15 lines)
+
+**NEVER:**
+- ❌ Use `tmux send-keys` directly
+- ❌ Launch dozens of parallel Bash commands for messaging
+- ❌ Send messages line-by-line (wastes sub-agent quota)
+- ❌ Split one message into 40+ separate commands
+
+**Why this matters:**
+- Each Bash command counts against sub-agent limit
+- Parallel message sending hits quota fast
+- Once quota exhausted, you can't use Task tool anymore
+- `tm-send` handles the "two-enter rule" automatically
+
 ---
 
 ## Sprint Workflow - Your Role
