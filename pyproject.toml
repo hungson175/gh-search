@@ -1,0 +1,56 @@
+[project]
+name = "gh-search"
+version = "0.1.0"
+description = "GitHub Project Search MCP Server - Semantic search over 55K+ GitHub repositories"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "hungson175", email = "your.email@example.com"}
+]
+dependencies = [
+    "fastmcp>=0.2.0",
+    "psycopg2-binary>=2.9.9",
+    "pgvector>=0.3.5",
+    "voyageai>=0.2.0",
+    "langchain>=0.3.0",
+    "langchain-community>=0.3.0",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "tqdm>=4.66.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "black>=24.0.0",
+    "ruff>=0.3.0",
+    "mypy>=1.9.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+asyncio_mode = "auto"
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
